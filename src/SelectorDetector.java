@@ -118,27 +118,32 @@ public class SelectorDetector {
 	}
 
 	private static List<Result> detectStates(VirtualFile file, VirtualFile folder) {
+		String folderStart = "drawable";
+		if (folder.exists() || folder.getName().contains("mipmap"))
+			folderStart = "mipmap";
 		List<Result> results = new ArrayList<Result>();
-		results.add(new Result(detectSuffixes(file), removeFileEndings(file.getName())));
+		results.add(new Result(detectSuffixes(file), removeFileEndings(file.getName()),folderStart));
 		for (VirtualFile other : folder.getChildren()) {
 			if (matches(file, other)) {
-				results.add(new Result(detectSuffixes(other), removeFileEndings(other.getName())));
+				results.add(new Result(detectSuffixes(other), removeFileEndings(other.getName()),folderStart));
 			}
 		}
 		return results;
 	}
 
 	private static String removeFileEndings(String fileName) {
-		return fileName.replace(".9.png", "").replace(".png", "");
+		return fileName.replace(".9.png", "").replace(".png", "").replace(".xml" , "");
 	}
 
 	static class Result {
 		public List<String> states;
 		public String drawableName;
-
-		Result(List<String> states, String drawableName) {
+		public String folderStart;
+		
+		Result(List<String> states, String drawableName, String folderStart) {
 			this.states = states;
 			this.drawableName = drawableName;
+			this.folderStart = folderStart;
 		}
 	}
 }
