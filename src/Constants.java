@@ -33,7 +33,7 @@ public class Constants {
 	public static final String ACTIVATED = "_activated";
 	public static final String WINDOW_FOCUSED = "_windowfocused";
 	public static String[] SUFFIXES = new String[]{NORMAL, PRESSED, FOCUSED, SELECTED, CHECKED, DISABLED, HOVERED, CHECKABLE, ACTIVATED, WINDOW_FOCUSED};
-	public static Pattern VALID_FOLDER_PATTERN = Pattern.compile("^drawable(-[a-zA-Z0-9]+)*$");
+	public static Pattern VALID_FOLDER_PATTERN = Pattern.compile("^(drawable|mipmap)(-[a-zA-Z0-9]+)*$");
 	public static String EXPORT_FOLDER = "drawable";
 	public static HashMap<String, State> sMapping;
 
