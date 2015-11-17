@@ -51,7 +51,7 @@ public class SelectorGenerator {
 		for (SelectorDetector.Result result : detectorResults) {
 			Log.d("fileName=" + result.drawableName + ", states:" + result.states);
 			Element item = new Element("item");
-			Attribute attribute = new Attribute("drawable", "@drawable/" + result.drawableName);
+			Attribute attribute = new Attribute("drawable", "@"+result.folderStart+"/" + result.drawableName);
 			attribute.setNamespace(NS, SCHEMA);
 			item.addAttribute(attribute);
 			for (String state : allStatesWithoutNormal) {
